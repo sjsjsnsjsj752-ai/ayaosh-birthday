@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karem × Aya — كل سنة وإنتي في حياتي ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Great+Vibes&display=swap');
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Cairo,sans-serif;background:#08050b;color:#fff}
+body{overflow-x:hidden}
+button{font:inherit}
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;overflow:hidden}
+#intro{background:radial-gradient(circle at 50% 35%,#32142f 0,#100914 42%,#050408 100%)}
+.glow{position:absolute;width:280px;height:280px;border-radius:50%;background:#ff3f9f;filter:blur(90px);opacity:.2;animation:pulse 4s infinite}
+@keyframes pulse{50%{transform:scale(1.35);opacity:.35}}
+.intro-box{text-align:center;z-index:2;max-width:520px}
+.small{color:#ffc6e8;letter-spacing:2px;font-size:13px}
+h1{font-size:clamp(42px,12vw,78px);margin:10px 0;font-weight:800}
+.name{font-family:"Great Vibes",cursive;font-size:clamp(65px,18vw,110px);color:#ff8dcc;direction:ltr}
+.subtitle{color:#e7dce8;line-height:1.9}
+.btn{border:0;border-radius:999px;padding:14px 28px;background:linear-gradient(135deg,#ff4fa8,#a64cff);color:white;font-weight:800;box-shadow:0 10px 35px #ff4fa844;cursor:pointer;margin-top:20px}
+#main{display:none;background:radial-gradient(circle at 50% 0,#35102e,#0b0710 55%,#040306);padding-top:70px}
+.content{width:min(920px,100%);z-index:2}
+.hero{text-align:center;margin-bottom:35px}
+.badge{display:inline-block;padding:7px 14px;border:1px solid #ffffff25;border-radius:30px;background:#ffffff0b;color:#ffd0eb}
+.hero h2{font-size:clamp(34px,9vw,70px);margin:10px 0;background:linear-gradient(90deg,#fff,#ff9dd4);-webkit-background-clip:text;color:transparent}
+.hero p{color:#d8cbd8}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:25px 0}
+.photo{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:24px;border:1px solid #ffffff18;box-shadow:0 15px 45px #0008;transition:.5s}
+.photo:hover{transform:translateY(-5px) scale(1.01)}
+.photo:nth-child(1){grid-column:span 2;aspect-ratio:16/10}
+.card{background:linear-gradient(145deg,#ffffff10,#ffffff05);border:1px solid #ffffff16;border-radius:28px;padding:28px 22px;margin:22px 0;box-shadow:0 20px 70px #0008;backdrop-filter:blur(12px)}
+.card h3{text-align:center;color:#ffacd9;margin-top:0}
+.message{font-size:17px;line-height:2.15;color:#f7edf5;white-space:pre-line}
+.secret{text-align:center}
+.heart-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+.heart{width:78px;height:78px;border:0;border-radius:50%;background:#ffffff0d;color:#ff75bb;font-size:34px;cursor:pointer;transition:.3s}
+.heart:hover{transform:scale(1.15)}
+#secretText{min-height:32px;color:#ffd1e9;margin-top:18px;font-weight:700}
+.cake{text-align:center;padding:35px 10px}
+.cake-emoji{font-size:90px;filter:drop-shadow(0 0 20px #ff7ac4);animation:float 2.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.final{font-size:clamp(24px,6vw,42px);font-weight:800;line-height:1.7;text-align:center}
+.signature{font-family:"Great Vibes",cursive;font-size:55px;color:#ff91c9;direction:ltr}
+#musicBtn{position:fixed;top:15px;left:15px;z-index:10;width:46px;height:46px;border:1px solid #ffffff25;border-radius:50%;background:#ffffff12;color:white;cursor:pointer}
+.hearts span{position:fixed;bottom:-40px;animation:rise linear forwards;pointer-events:none;z-index:5}
+@keyframes rise{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+@media(max-width:560px){.gallery{gap:9px}.card{padding:23px 17px}.message{font-size:16px}.screen{padding:18px}}
+</style>
+</head>
+<body>
+
+<section id="intro" class="screen">
+  <div class="glow"></div>
+  <div class="intro-box">
+    <div class="small">PRIVATE SURPRISE 🔐</div>
+    <div class="name">Aya</div>
+    <h1>❤️</h1>
+    <p class="subtitle">المفاجأة دي ليكي إنتي بس...<br>بس الأول دخلي كلمة السر 👀</p>
+
+    <div style="max-width:340px;margin:22px auto 0">
+      <input id="password" type="password" inputmode="text"
+        placeholder="اكتبي كلمة السر..."
+        onkeydown="if(event.key==='Enter') checkPassword()"
+        style="width:100%;padding:15px 18px;border-radius:18px;border:1px solid #ffffff25;
+        background:#ffffff0d;color:white;outline:none;text-align:center;font-size:16px;">
+      <button class="btn" onclick="checkPassword()">دخول للمفاجأة 🔓</button>
+      <div id="wrong" style="color:#ff8fbe;min-height:28px;margin-top:8px;font-size:14px"></div>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+  <button id="musicBtn" onclick="toggleMusic()">♫</button>
+  <audio id="music" loop preload="auto">
+    <!-- ضعي ملف الأغنية هنا باسم music.mp3 -->
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="content">
+    <section class="hero">
+      <div class="badge">Karem × Aya</div>
+      <h2>كل سنة وإنتي هنا ❤️</h2>
+      <p>مش مجرد عيد ميلاد... دي حاجة صغيرة من قلبي ليكي.</p>
+    </section>
+
+    <section class="gallery">
+      <img class="photo" src="photo1.jpg" alt="Karem & Aya">
+      <img class="photo" src="photo2.jpg" alt="Karem & Aya">
+      <img class="photo" src="photo3.jpg" alt="Karem & Aya">
+      <img class="photo" src="photo4.jpg" alt="Karem & Aya">
+      <img class="photo" src="photo5.jpg" alt="Karem & Aya">
+      <img class="photo" src="photo6.jpg" alt="Karem & Aya">
+      <img class="photo" src="photo7.jpg" alt="Karem & Aya">
+    </section>
+
+    <section class="card">
+      <h3>💌 من كارم لأيوش</h3>
+      <div class="message">مش عارف أوصف قد إيه إنتي بالنسبالي بجد، يعني عمري ما كان في حد كده في حياتي، بخاف عليه وباهتم بكل حاجة تخصه بالشكل ده، بس إنتي غير... إنتي كل حاجة في حياتي بجد.
+
+عمري ما هنسى أول يوم اتكلمنا فيه، ولا أول يوم سمعت صوتك، عشان كانت من أجمل اللحظات اللي دخلتي فيها قلبي.
+
+أنا بحبك أوي يا أيوش ❤️
+إنتي الحاجة الحلوة اللي في حياتي، يا نور عيني. إنتي كل حاجة، ومش عايز غيرك إنتي يا نن عيني.
+
+إنتي غيرتي حاجات كتير فيا، وصحيتي حاجات كتير جوايا بجد.
+
+وهفضل أحبك طول العمر يا نصي التاني، يا أجمل حب في الدنيا.
+
+كل سنة وإنتي واخدة قلبي وحياتي كلها ❤️</div>
+    </section>
+
+    <section class="card secret">
+      <h3>اختاري قلب واحد... 👀❤️</h3>
+      <p>واحد بس هيخبي جواه رسالة ليكي.</p>
+      <div class="heart-grid">
+        <button class="heart" onclick="secret(0)">♥</button>
+        <button class="heart" onclick="secret(1)">♥</button>
+        <button class="heart" onclick="secret(2)">♥</button>
+      </div>
+      <div id="secretText"></div>
+    </section>
+
+    <section class="card cake">
+      <div class="cake-emoji">🎂</div>
+      <h3>دي ليكي إنتي 🎈</h3>
+      <p>خدي نفس... وتخيلي إنك بتطفي الشموع ❤️</p>
+      <button class="btn" onclick="celebrate()">اطفي الشموع ✨</button>
+    </section>
+
+    <section class="card">
+      <div class="final">كل سنة وإنتي واخدة قلبي<br>وحياتي كلها ❤️</div>
+      <p style="text-align:center;margin-bottom:4px">من الشخص اللي اختارك من قلبه...</p>
+      <div class="signature">Karem</div>
+    </section>
+  </div>
+  <div class="hearts" id="hearts"></div>
+</main>
+
+<script>
+let audioReady=false;
+function checkPassword(){
+  const password = document.getElementById('password').value.trim();
+  const wrong = document.getElementById('wrong');
+
+  // كلمة السر الحالية: 7/11
+  if(password === '7/11'){
+    wrong.textContent = '';
+    openSurprise();
+  }else{
+    wrong.textContent = 'لأ يا أيوش 😌 جربي كلمة السر تاني ❤️';
+    document.getElementById('password').value = '';
+    document.getElementById('password').focus();
+  }
+}
+
+function openSurprise(){
+  document.getElementById('intro').style.display='none';
+  document.getElementById('main').style.display='flex';
+  window.scrollTo(0,0);
+  const music=document.getElementById('music');
+  music.play().then(()=>{audioReady=true}).catch(()=>{});
+  burst(16);
+}
+function toggleMusic(){
+  const m=document.getElementById('music');
+  if(m.paused){m.play();}else{m.pause();}
+}
+function secret(i){
+  const msgs=[
+    "إنتي مش صدفة في حياتي... إنتي أجمل حاجة حصلتلي ❤️",
+    "أيوش، وجودك لوحده بيخلّي الدنيا أحلى بكتير 🥹❤️",
+    "لو ليا أمنية واحدة، فهي إنك تفضلي دايمًا في حياتي ❤️"
+  ];
+  document.getElementById('secretText').textContent=msgs[i];
+  burst(8);
+}
+function burst(n=20){
+  const box=document.getElementById('hearts');
+  for(let i=0;i<n;i++){
+    const s=document.createElement('span');
+    s.textContent=['❤️','💗','💕','✨'][Math.floor(Math.random()*4)];
+    s.style.left=Math.random()*100+'vw';
+    s.style.fontSize=(16+Math.random()*25)+'px';
+    s.style.animationDuration=(3+Math.random()*4)+'s';
+    box.appendChild(s);
+    setTimeout(()=>s.remove(),8000);
+  }
+}
+function celebrate(){
+  burst(55);
+  document.body.animate(
+    [{filter:'brightness(1)'},{filter:'brightness(1.6)'},{filter:'brightness(1)'}],
+    {duration:900}
+  );
+  alert("كل سنة وإنتي أحلى حاجة في حياة كارم ❤️🎂");
+}
+</script>
+</body>
+</html>
